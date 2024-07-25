@@ -11,7 +11,8 @@ export class ResourceController {
         try {
             return await this.genericService.getResource(link);
         } catch (error) {
-            this.logger.error(`Error occurred while fetching resource: ${error.message}`, { meta: error });
+            this.logger.error('ResourceController','getResource',error);
+            throw error
         }
     }
     @Get('list')
@@ -19,7 +20,8 @@ export class ResourceController {
         try {
             return await this.genericService.getResourceList();
         } catch (error) {
-            this.logger.error(`Error occurred while fetching resource list: ${error.message}`, { meta: error });
+            this.logger.error('ResourceController', 'getResourceList',error);
+            throw error
         }
     }
 }

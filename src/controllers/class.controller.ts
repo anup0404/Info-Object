@@ -16,7 +16,8 @@ export class ClassController {
 			const result = await this.genericService.getClassesByInstitute(instituteId);
 			return this.mapper.mapArray(result, InstitutesToClasses, ClassDto);
 		} catch (error) {
-			this.logger.error(`Faild to get class by Institute by institute ID : ${instituteId}`,{meta:error})
+			this.logger.error('ClassController','getClassesByInstitute',error);
+			throw error
 		}
 	}
 }

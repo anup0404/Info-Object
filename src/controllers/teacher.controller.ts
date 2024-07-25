@@ -16,7 +16,8 @@ export class TeacherController {
 			const result = await this.genericService.getTeachersBySubject(subjectId);
 			return this.mapper.mapArray(result, InstituteClassSubjectsToTeacher, TeacherDto);
 		} catch (error) {
-			this.logger.error(`Error while getting teacher by subject for subject Id : ${subjectId}`,{meta:error})
+			this.logger.error('TeacherController',' getTeachersBySubject',error);
+			throw error
 		}
 	}
 }

@@ -18,9 +18,8 @@ export class BookController {
             const result = await this.genericService.getBooksBySubject(subjectId);
             return this.mapper.mapArray(result, Books, BookDto);
         } catch (error) {
-            this.logger.error(`Failed to fetch book for subject ID: ${subjectId}`, {
-                meta: error,
-              });
+            this.logger.error('BooksController','getBooksBySubject',error);
+            throw error
         }
     }
 
@@ -50,9 +49,8 @@ export class BookController {
             const result = await this.genericService.saveBook(bookData);
             return this.mapper.map(result, Books, BookDto);
         } catch (error) {
-            this.logger.error(`Failed to add book : ${error.message}`, {
-                meta: error,
-              });
+            this.logger.error('BooksController', 'addBook',error);
+            throw error
         }
     }
 }

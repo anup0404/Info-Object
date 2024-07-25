@@ -16,7 +16,8 @@ export class StateController {
 			const result = await this.genericService.getAllStates(false);
 			return this.mapper.mapArray(result, States, StateDto);
 		} catch (error) {
-			this.logger.error(`Error occurred while getting all state : ${error.message}`,{meta:error})
+			this.logger.error('StateController',' getAllStates',error);
+			throw error
 		}
 	}
 }

@@ -219,7 +219,8 @@ export class GenericService {
 		try {
 			return await s3.upload(params).promise();
 		} catch (error) {
-			this.logger.error(`Error uploading file to S3: ${error.message}`, { meta: error });
+			this.logger.error('It is a generic service','uploadFile',error);
+			throw error
 		}
 	}
 

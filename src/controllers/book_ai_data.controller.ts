@@ -28,9 +28,8 @@ export class AiBookController {
       const result = await this.genericService.getAiDataByBook(subjectId);
       return this.mapper.mapArray(result, BooksAIData, AiBookDto);
     } catch (error) {
-      this.logger.error(`Failed to fetch AI data for book ID: ${subjectId}`, {
-        meta: error,
-      });
+      this.logger.error('AiBookController','getBooksBySubject',error);
+      throw error
     }
   }
 
@@ -61,9 +60,8 @@ export class AiBookController {
       const result = await this.genericService.saveBookAIData(bookData);
       return this.mapper.map(result, BooksAIData, AiBookDto);
     } catch (error) {
-      this.logger.error(`Failed to upload book data: ${error.message}`, {
-        meta: error,
-      });
+      this.logger.error('AiBookController','uploadBook',error);
+      throw error
     }
   }
 }
